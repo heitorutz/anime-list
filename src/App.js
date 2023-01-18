@@ -1,11 +1,7 @@
 import { InitialPage } from './pages'
 
 function App() {
-  return (
-    <>
-      <InitialPage />
-    </>
-  )
+  return <InitialPage />
 }
 
 export default App

@@ -19,6 +19,7 @@ export const InitialPage = () => {
       'https://api.jikan.moe/v4/top/anime?bypopularity'
     )
     setTopAnime(temp.data.data.slice(0, 5))
+    console.log(temp.data.data.slice(0, 5))
   }
 
   const fetchAnime = async (query) => {
@@ -29,7 +30,7 @@ export const InitialPage = () => {
   }
 
   useEffect(() => {
-    ;(async () => {
+    (async () => {
       const items = await axios.get(URL)
       setItems(items.data.data)
       getTopAnime()
@@ -68,6 +69,16 @@ export const InitialPage = () => {
               <AiFillStar />
               <AiOutlineStar className="text-gray-700" />
             </div>
+            <div className="text-gray-400 absolute bottom-5 gap-20 flex text-sm flew-row ">
+              {topAnime.map((item) => (
+                <h1
+                  className="hover:text-white transition ease-in-out cursor-pointer"
+                  key={item.mal_id}
+                >
+                  {item.title}
+                </h1>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -76,7 +87,6 @@ export const InitialPage = () => {
             <input
               placeholder="Pesquise seu anime"
               onChange={(e) => setSearch(e.target.value)}
-
               className="mt-20 placeholder bg-transparent border-b-2 pl-4 text-white rounded-sm !outline-none"
             />
           </form>
