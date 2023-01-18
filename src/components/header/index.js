@@ -1,14 +1,26 @@
-import { AiOutlineSearch } from 'react-icons/ai'
-
 export const Header = () => {
   return (
-    <div className="w-full bg-primary h-16 p-4 pl-24 flex justify-center items-center">
-      <div className="flex justify-center items-center w-full">
-        <AiOutlineSearch className="translate-x-8 text-gray-400" />
-        <input
-          className="bg-gray-100 w-1/3 !outline-none text-gray-600 rounded-lg p-1 pl-12"
-          placeholder="Pesquise animes, e mais..."
-        />
+    <div className="w-full bg-transparent h-16 p-4 pl-24 mt-4">
+      <div className="flex w-96 justify-between">
+        <h1 className="text-white cursor-pointer">Heitor Urbanetz</h1>
+        <a
+          href="https://github.com/HeitorUrbanetz"
+          target="_blank"
+          without
+          rel="noreferrer"
+          className="text-gray-700 cursor-pointer hover:text-white transition ease-in-out"
+        >
+          Github
+        </a>
+        <a
+          href="https://www.linkedin.com/in/heitor-urbanetz-95b10322a/"
+          target="_blank"
+          without
+          rel="noreferrer"
+          className="text-gray-700 cursor-pointer hover:text-white transition ease-in-out"
+        >
+          Linkedin
+        </a>
       </div>
     </div>
   )
