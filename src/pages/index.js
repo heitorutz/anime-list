@@ -16,15 +16,15 @@ export const InitialPage = () => {
 
   return (
     <>
-      <div className="overflow-hidden">
-        <div className="w-full h-screen scale-105 wallpaper flex justify-start items-center">
+      <div className="overflow-x-hidden">
+        <div className="w-full h-screen scale-105 wallpaper flex-col flex justify-start items-center">
           <div className="p-20 -mt-30 pl-60 w-full flex-col h-full flex justify-center">
             <h1 className="text-white text-8xl text-start">Globin Slayer</h1>
             <p className="text-gray-400 text-sm text-start mt-6 ml-3">
               Goblin Slayer é uma série de light novel de fantasia sombria
               japonesa escrita por Kumo Kagyu <br /> e ilustrada por Noboru
               Kannatuki. Uma adaptação em uma série de mangá <br /> escrita e
-              ilustrada por Kōsuke Kurose é 'serializada' na revista Monthly Big
+              ilustrada por Kōsuke Kurose, é 'serializada' na revista Monthly Big
               Gangan.
             </p>
 
@@ -35,11 +35,19 @@ export const InitialPage = () => {
               hover:text-black text-white flex items-center
               justify-around cursor-pointer ml-2 mt-12 w-60 p-2 flex-row rounded-3xl"
             >
-              <button>ASSISTIR</button>
+              <button type="button">ASSISTIR</button>
               <AiOutlineArrowRight className="text-xl" />
             </div>
           </div>
+
+
+
         </div>
+
+        <div className="bg-secondary w-screen h-screen">
+
+          </div>
+
         {/* <div className="w-9/12 grid grid-rows-5 grid-flow-col gap-6">
           {items.map((item, index) => (
             <div
