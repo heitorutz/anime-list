@@ -1,17 +1,38 @@
-import { useEffect, useState } from 'react'
-import { AiOutlineArrowRight } from 'react-icons/ai'
+import { useCallback, useEffect, useState } from 'react'
+import { AiOutlineArrowRight, AiFillStar, AiOutlineStar } from 'react-icons/ai'
 import axios from 'axios'
 import { Header } from '../components/header'
 
 export const InitialPage = () => {
   const [items, setItems] = useState([])
+  const [topAnime, setTopAnime] = useState([])
+  const [search, setSearch] = useState('')
   const URL = 'https://api.jikan.moe/v4/anime'
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    fetchAnime(search)
+  }
+
+  const getTopAnime = async () => {
+    const temp = await axios.get(
+      'https://api.jikan.moe/v4/top/anime?bypopularity'
+    )
+    setTopAnime(temp.data.data.slice(0, 5))
+  }
+
+  const fetchAnime = async (query) => {
+    const temp = await axios.get(`https://api.jikan.moe/v4/anime?q=${query}`)
+    if (temp) {
+      setItems(temp.data.data)
+    }
+  }
 
   useEffect(() => {
     ;(async () => {
       const items = await axios.get(URL)
       setItems(items.data.data)
-      console.log(items.data.data)
+      getTopAnime()
     })()
   }, [])
 
@@ -40,17 +61,32 @@ export const InitialPage = () => {
               <button type="button">ASSISTIR</button>
               <AiOutlineArrowRight className="text-xl" />
             </div>
+            <div className="text-orange-700 flex flex-row ml-4 mt-10">
+              <AiFillStar />
+              <AiFillStar />
+              <AiFillStar />
+              <AiFillStar />
+              <AiOutlineStar className="text-gray-700" />
+            </div>
           </div>
         </div>
 
-        <div className="bg-secondary w-full h-full flex justify-center">
-          <div className="w-9/12 grid grid-rows-5 grid-flow-col gap-6 mt-24">
+        <div className="bg-secondary items-center  flex-col w-full h-full flex justify-center">
+          <form className="w-1/4 flex justify-center" onSubmit={handleSubmit}>
+            <input
+              placeholder="Pesquise seu anime"
+              onChange={(e) => setSearch(e.target.value)}
+
+              className="mt-20 placeholder bg-transparent border-b-2 pl-4 text-white rounded-sm !outline-none"
+            />
+          </form>
+
+          <div className=" w-4/5 grid grid-rows-5 grid-flow-col gap-6 mt-10 mb-10">
             {items.map((item, index) => (
               <div
-                className=" flex-col cursor-pointer
-               bg-transparent hover:drop-shadow-[0_35px_35px_rgba(0,0,0,0.1)]
-               hover:-translate-y-1 transform-gpu transition ease-in-out
-               flex items-center"
+                className="flex-col cursor-pointer bg-transparent
+                hover:-translate-y-1 transform-gpu transition ease-in-out
+                flex items-center"
                 key={item.mal_id}
               >
                 <div className="w-full h-full">
