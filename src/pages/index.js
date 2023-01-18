@@ -21,7 +21,10 @@ export const InitialPage = () => {
         <div className="grid grid-rows-5 grid-flow-col gap-12">
           {items.map((item, index) => (
             <div
-              className="w-30 h-30 flex-col bg-white hover:shadow-2xl hover:-translate-y-6 flex items-center rounded-lg hover:bg-red-300"
+              className="w-30 h-30 flex-col cursor-pointer
+               bg-white hover:drop-shadow-[0_35px_35px_rgba(0,0,0,0.35)]
+               hover:-translate-y-6 transform-gpu transition ease-in-out
+               flex items-center rounded-lg hover:bg-red-300"
               key={item.mal_id}
             >
               <div className="w-full h-full">
