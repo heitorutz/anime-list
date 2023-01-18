@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { AiOutlineArrowRight, AiFillStar, AiOutlineStar } from 'react-icons/ai'
 import axios from 'axios'
 import { Header } from '../components/header'
+import { Link } from 'react-router-dom'
 
 export const InitialPage = () => {
   const [items, setItems] = useState([])
@@ -19,7 +20,6 @@ export const InitialPage = () => {
       'https://api.jikan.moe/v4/top/anime?bypopularity'
     )
     setTopAnime(temp.data.data.slice(0, 5))
-    console.log(temp.data.data.slice(0, 5))
   }
 
   const fetchAnime = async (query) => {
@@ -93,7 +93,7 @@ export const InitialPage = () => {
 
           <div className=" w-4/5 grid grid-rows-5 grid-flow-col gap-6 mt-10 mb-10">
             {items.map((item, index) => (
-              <div
+              <Link to={`/anime/${item.title}`}
                 className="flex-col cursor-pointer bg-transparent
                 hover:-translate-y-1 transform-gpu transition ease-in-out
                 flex items-center"
@@ -109,7 +109,7 @@ export const InitialPage = () => {
                 <div className="mt-2 text-white">
                   <h1>{item.title}</h1>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
